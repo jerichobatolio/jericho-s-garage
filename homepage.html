@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="icon" href="logo5.png" type="image/x-icon">
+    <style>
+        /* Styles for header, footer, sidebar, etc. */
+        /* You can customize these styles according to your preference */
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: relative; /* Add position relative */
+            display: flex; /* Make header a flex container */
+            justify-content: space-between; /* Align items horizontally */
+            align-items: center; /* Center align vertically */
+        }
+        .header-circle-images {
+            display: flex; /* Make the container for circle images a flex container */
+            align-items: center; /* Center align vertically */
+        }
+        .header-image {
+            width: 50px; /* Adjust image size */
+            height: 50px; /* Adjust image size */
+            border-radius: 50%; /* Make it circular */
+            margin-left: 10px; /* Add some margin between images */
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -200px; /* Hide sidebar by default */
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            width: 200px;
+            height: 100%;
+            transition: 0.3s;
+        }
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            transition: margin-left 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+            margin-left: 10px; /* Move menu bars to the right on hover */
+        }
+        .content {
+            margin-left: 20px; /* Adjust this value as needed */
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Center align the content */
+            align-items: center; /* Center align vertically */
+        }
+        .sidebar-toggle {
+            position: fixed;
+            top: 10px; /* Adjusted top position */
+            left: 20px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .sidebar-toggle .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+        .sidebar-toggle.clicked .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .sidebar-toggle.clicked .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .sidebar-toggle.clicked .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+        .menu-bars {
+            margin-top: 20px; /* Adjusted margin top */
+            display: flex;
+            align-items: center;
+        }
+        .menu-bars img {
+            width: 30px; /* Adjust image size as needed */
+            height: 30px; /* Adjust image size as needed */
+            margin-right: 10px;
+            transition: margin-left 0.3s; /* Apply transition to icon */
+        }
+        .menu-title {
+            font-weight: bold;
+        }
+        .menu-bars:hover img {
+            margin-left: 10px; /* Move icon to the right on hover */
+        }
+        /* Add background image to home section */
+        #home {
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            padding: 50px 0;
+        }
+        /* Style for shop products */
+        .product {
+            margin-bottom: 30px; /* Adjust spacing between products */
+            text-align: center;
+        }
+        .product img {
+            width: 150px; /* Adjust product image size */
+            height: auto;
+            margin-bottom: 10px; /* Adjust spacing between image and text */
+        }
+        .product h3 {
+            margin-bottom: 5px; /* Adjust spacing between product name and price */
+        }
+        .product p {
+            color: #666;
+        }
+        .button {
+            background-color: #007bff; /* Blue */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s; /* Add transition effect to button */
+        }
+        .button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+
+</head>
+<body>
+    <header id="header">
+        <h1>JERICHO's GARAGE</h1>
+        <div class="header-circle-images">
+            <img src="https://img.freepik.com/premium-vector/auto-repair-garage-logo-automotive-industry_160069-63.jpg" alt="Profile Image" class="header-image">
+        </div>
+    </header>
+
+    <div class="sidebar-toggle" onclick="toggleSidebar()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <!-- Sidebar content -->
+        <a href="#" class="menu-bars" onclick="scrollToSection('home')">
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/000/568/450/original/vector60-1781-01.jpg" alt="Home Icon">
+            <span class="menu-title">Home</span>
+        </a>
+        <a href="#" class="menu-bars" onclick="scrollToSection('about')">
+            <img src="https://cdn-icons-png.flaticon.com/512/15/15659.png" alt="About Icon">
+            <span class="menu-title">About Us</span>
+        </a>
+        <a href="#" class="menu-bars" onclick="scrollToSection('services')">
+            <img src="https://w7.pngwing.com/pngs/923/862/png-transparent-professional-services-computer-icons-organization-others-class-service-public-relations.png" alt="Services Icon">
+            <span class="menu-title">Services</span>
+        </a>
+        <a href="#" class="menu-bars" onclick="scrollToSection('contact')">
+            <img src="https://cdn-icons-png.freepik.com/256/455/455705.png" alt="Contact Icon">
+            <span class="menu-title">Contact Us</span>
+        </a>
+        <a href="#" class="menu-bars" onclick="scrollToSection('shop')">
+            <img src="https://static.vecteezy.com/system/resources/previews/000/583/708/original/online-shop-icon-vector.jpg" alt="Shop Icon">
+            <span class="menu-title">Shop</span>
+        </a>
+        
+    </div>
+
+    <div class="content">
+        <div id="home" style="display:none">
+            <!-- Background image and lots of text for Home section -->
+            <h2>Home</h2>
+            <p>WELCOME TO JERICHO's GARAGE</p>
+            <p>At Jericho's Garage, we're more than just a car shop – we're a destination for automotive enthusiasts. Step into our world of horsepower, passion, and craftsmanship, where every vehicle tells a story and every drive is an adventure waiting to unfold. Explore our meticulously curated collection of premium automobiles, each handpicked for its quality, performance, and style. Whether you're a seasoned enthusiast or a first-time buyer, our expert team is here to guide you on your journey to finding the perfect ride. Discover the thrill of owning your dream car and experience the unmatched service and expertise that sets Jericho's Garage apart. Welcome to Jericho's Garage – where automotive dreams become a reality.</p>
+        </div>
+        <div id="about" style="display:none">
+            <!-- Text content for About Us section -->
+            <h2>About Us</h2>
+            <p>JERICHO's GARAGE.</p>
+            <p>Welcome to Jericho's Garage – your premier destination for automotive excellence.</p>
+            <p>Founded with a passion for cars and a commitment to exceptional service, Jericho's Garage has been serving car enthusiasts since [1990].</p>
+            <p>At Jericho's Garage, we pride ourselves on our curated selection of premium automobiles, handpicked by our team of knowledgeable experts. Whether you're searching for a luxury sedan, a rugged SUV, or a high-performance sports car, we have the perfect vehicle to fit your lifestyle and preferences.</p>
+            <p>But we're more than just a car dealership – we're a community of automotive enthusiasts dedicated to providing an unparalleled car-buying experience. Our team is here to guide you through every step of the process, from exploring our showroom to securing financing and beyond.</p>
+            <p>At Jericho's Garage, we believe that buying a car should be an enjoyable and stress-free experience. That's why we're committed to transparency, integrity, and personalized service, ensuring that you drive away satisfied with your purchase.</p>
+            <p>Join us at Jericho's Garage and experience the difference for yourself. Whether you're a seasoned collector or a first-time buyer, we look forward to helping you find the perfect car to fuel your passion for the road ahead.</p>
+            <p>Welcome to the Jericho's Garage family – where your automotive dreams become a reality.</p>
+        </div>
+        <div id="services" style="display:none">
+            <!-- Text content for Services section -->
+            <h2>Services Room</h2>
+            <p>YOU CAN GET YOUR OWN UNITS BY;</p>
+            <p>CASH</p>
+            <p>AUTO FINANCING</p>
+            <p>LEASING</p>
+            <p>RENTING</p>
+        </div>
+        <div id="contact" style="display:none">
+            <!-- Text content for Contact Us section -->
+            <h2>Contact Us</h2>
+            <p>Thank you for your interest in Jericho's Garage. We're here to assist you with any questions, inquiries, or feedback you may have.</p>
+            <p>You can reach us through the following channels:</p>
+            <p>Phone: [+63 9532956095]</p>
+            <p>Email: [jericho's garage@email.com]</p>
+            <p>Address: [San jose,Occidental Mindoro]</p>
+            <p>Our dedicated team is available during our business hours to provide assistance and support. Whether you're looking to schedule a test drive, inquire about financing options, or simply learn more about our inventory, we're here to help.</p>
+            <p>You can also connect with us on social media for the latest updates, news, and promotions:</p>
+            <p>[JERICHO's GARAGE]</p>
+            <p>We value your feedback and strive to provide the best possible experience for our customers. Don't hesitate to reach out – we look forward to hearing from you!</p>
+        </div>                
+
+        <div id="shop" style="display:none">
+            <div id="shop">
+                <!-- Product listing for Shop section -->
+                <div class="product">
+                    <img src="https://autowise.com/wp-content/uploads/2019/01/lamborghini-sc18-1.jpg" alt="LAMBORGHINI">
+                    <h3>LAMBORGHINI</h3>
+                    <p>$998,000</p>
+                    <button class="button" onclick="buyOrAddToCart(998000)">Buy</button>
+                    <button class="button" onclick="buyOrAddToCart(998000)">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://static1.topspeedimages.com/wordpress/wp-content/uploads/jpg/201706/2014-ferrari-laferrari.jpg" alt="FERRARI">
+                    <h3>FERRARI</h3>
+                    <p>$789,000</p>
+                    <button class="button" onclick="buyOrAddToCart(789000)">Buy</button>
+                    <button class="button" onclick="buyOrAddToCart(789000)">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://car-images.bauersecure.com/wp-images/3566/lw_supra_050.jpg" alt="TOYOTA">
+                    <h3>TOYOTA</h3>
+                    <p>$699,000</p>
+                    <button class="button" onclick="buyOrAddToCart(699000)">Buy</button>
+                    <button class="button" onclick="buyOrAddToCart(699000)">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://cars.usnews.com/static/images/Auto/izmo/i159614297/2020_mercedes_benz_amg_gt_angularfront.jpg" alt="MERCEDEDES-BENZ">
+                    <h3>MERCEDEDES-BENZ</h3>
+                    <p>$899,000</p>
+                    <button class="button" onclick="buyOrAddToCart(899000)">Buy</button>
+                    <button class="button" onclick="buyOrAddToCart(899000)">Add to Cart</button>
+                </div>
+                <div class="product">
+                    <img src="https://qwestore.com/png_images_min/10/Tesla-in-a-ellite-color-bBlack-Tesla-Carb-7849.png" alt="TESLA">
+                    <h3>TESLA</h3>
+                    <p>$1,000,000</p>
+                    <button class="button" onclick="buyOrAddToCart(1000000)">Buy</button>
+                    <button class="button" onclick="buyOrAddToCart(1000000)">Add to Cart</button>
+                </div>
+            </div>
+            <button class="button" onclick="calculateTotal()">Calculate Total</button>
+            <p>Total: $<span id="total">0</span></p>
+            <p>Date: <span id="date"></span></p>
+            <p>Number of Items Purchased: <span id="itemsPurchased">0</span></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; JERICHO's GARAGE. All rights reserved.</p>
+    </footer>
+    <div id="sidebar">
+        <!-- Your sidebar content goes here -->
+    </div>
+
+    <script>
+        var total = 0;
+        var itemsPurchased = 0;
+
+        function buyOrAddToCart(price) {
+            total += price;
+            itemsPurchased++;
+            updateTotal();
+            var buttons = document.querySelectorAll('.button');
+            buttons.forEach(function(button) {
+                button.style.backgroundColor = '#28a745'; // Green color
+                setTimeout(function() {
+                    button.style.backgroundColor = '#007bff'; // Reset color after 0.5 seconds
+                }, 500);
+            });
+        }
+
+        function updateTotal() {
+            document.getElementById('total').textContent = total;
+            document.getElementById('itemsPurchased').textContent = itemsPurchased;
+        }
+
+        function calculateTotal() {
+            alert("Total: $" + total);
+        }
+
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var sidebarToggle = document.querySelector(".sidebar-toggle");
+            sidebar.classList.toggle("clicked");
+            sidebarToggle.classList.toggle("clicked");
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-200px";
+            } else {
+                sidebar.style.left = "0px";
+            }
+        }
+
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.content > div');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+        function scrollToSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            section.scrollIntoView({ behavior: 'smooth' });
+            showSection(sectionId); // Show section content after clicking on menu item
+            toggleSidebar(); // Close sidebar after clicking on menu item
+        }
+
+        // Set current date
+        document.getElementById('date').textContent = new Date().toLocaleDateString();
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+/* Styles for header, footer, sidebar, etc. */
+/* You can customize these styles according to your preference */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: relative; /* Add position relative */
+    display: flex; /* Make header a flex container */
+    justify-content: space-between; /* Align items horizontally */
+    align-items: center; /* Center align vertically */
+}
+/* Other CSS styles go here */

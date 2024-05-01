@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login & Sign Up Form</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20231221/pngtree-silver-mercedes-benz-c-class-photo-image_15548653.png'); /* Add your background image URL here */
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    position: relative;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .container:hover {
+    transform: scale(1.05);
+  }
+
+  .form-container {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .form-container h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: darkred;
+  }
+
+  .form-container form {
+    margin-top: 20px;
+  }
+
+  .form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .form-container input:focus {
+    border-bottom: 1px solid #007bff;
+  }
+
+  .form-container button {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    background-color: skyblue;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .form-container button:hover {
+    background-color: gold;
+  }
+
+  .form-container .signup-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <h2>Login</h2>
+      <form id="login-form">
+        <input type="text" placeholder="Username" required>
+        <br>
+        <input type="password" placeholder="Password" required>
+        <br>
+        <button type="submit">Login</button>
+      </form>
+      <div class="signup-link">Don't have an account? <a href="#" id="signup-link">Sign Up</a></div>
+    </div>
+  </div>
+
+<script>
+  const loginForm = document.getElementById('login-form');
+  const signupLink = document.getElementById('signup-link');
+
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    const username = loginForm.querySelector('input[type="text"]').value;
+    const password = loginForm.querySelector('input[type="password"]').value;
+
+    // Check if username and password match the default values
+    if (username === 'jericho' && password === 'carshop') {
+      // Authentication successful, redirect to homepage or perform other actions
+      window.location.href = 'file:///C:/Users/Windows%2010%20Lite/AppData/Local/Microsoft/Windows/INetCache/IE/11A53Z3K/HOMEPAGE(whole)[1].html#';
+    } else {
+      // Authentication failed, display error message
+      alert('Invalid username or password');
+    }
+  });
+
+  signupLink.addEventListener('click', function(event) {
+    event.preventDefault();
+    const container = document.querySelector('.container');
+    container.style.backgroundColor = "rgba(255, 90, 95, 0.8)"; /* Change background color */
+    container.innerHTML = `
+      <div class="form-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+          <input type="text" placeholder="jericho" required>
+          <br>
+          <input type="email" placeholder="Email" required>
+          <br>
+          <input type="password" placeholder="carshop" required>
+          <br>
+          <button type="submit">Sign Up</button>
+        </form>
+        <div class="signup-link">Already have an account? <a href="#" id="login-link">Login</a></div>
+      </div>
+    `;
+
+    const loginLink = document.getElementById('login-link');
+    loginLink.addEventListener('click', function(event) {
+      event.preventDefault();
+      const container = document.querySelector('.container');
+      container.style.backgroundColor = "rgba(255, 255, 255, 0.8)"; /* Change background color */
+      container.innerHTML = `
+        <div class="form-container">
+          <h2>Login</h2>
+          <form id="login-form">
+            <input type="text" placeholder="jericho" required>
+            <br>
+            <input type="password" placeholder="carshop" required>
+            <br>
+            <button type="submit">Login</button>
+          </form>
+          <div class="signup-link">Don't have an account? <a href="#" id="signup-link">Sign Up</a></div>
+        </div>
+      `;
+      
+      signupLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        const container = document.querySelector('.container');
+        container.style.backgroundColor = "rgba(255, 90, 95, 0.8)"; /* Change background color */
+        container.innerHTML = `
+          <div class="form-container">
+            <h2>Sign Up</h2>
+            <form id="signup-form">
+              <input type="text" placeholder="jericho" required>
+              <br>
+              <input type="email" placeholder="Email" required>
+              <br>
+              <input type="password" placeholder="carshop" required>
+              <br>
+              <button type="submit">Sign Up</button>
+            </form>
+            <div class="signup-link">Already have an account? <a href="#" id="login-link">Login</a></div>
+          </div>
+        `;
+      });
+    });
+  });
+</script>
+</body>
+</html>
